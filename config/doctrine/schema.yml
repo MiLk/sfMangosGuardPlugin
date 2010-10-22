@@ -1,144 +1,221 @@
-sfGuardGroup:
-  actAs: [Timestampable]
+Account:
+  connection: doctrine
+  tableName: account
   columns:
-    name:
-      type: string(255)
-      unique: true
-    description: string(1000)
-  relations:
-    Users:
-      class: sfGuardUser
-      refClass: sfGuardUserGroup
-      local: group_id
-      foreign: user_id
-      foreignAlias: Groups
-    Permissions:
-      class: sfGuardPermission
-      local: group_id
-      foreign: permission_id
-      refClass: sfGuardGroupPermission
-      foreignAlias: Groups
-
-sfGuardPermission:
-  actAs: [Timestampable]
-  columns:
-    name:
-      type: string(255)
-      unique: true
-    description: string(1000)
-
-sfGuardGroupPermission:
-  options:
-    symfony:
-      form:   false
-      filter: false
-  actAs: [Timestampable]
-  columns:
-    group_id:
-      type: integer
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: true
       primary: true
-    permission_id:
-      type: integer
-      primary: true
-  relations:
-    Group:
-      class: sfGuardGroup
-      local: group_id
-      onDelete: CASCADE
-    Permission:
-      class: sfGuardPermission
-      local: permission_id
-      onDelete: CASCADE
-
-sfGuardUser:
-  actAs: [Timestampable]
-  columns:
-    first_name: string(255)
-    last_name: string(255)
-    email_address:
-      type: string(255)
-      notnull: true
-      unique: true
+      autoincrement: true
     username:
-      type: string(128)
+      type: string(32)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: ''
       notnull: true
-      unique: true
-    algorithm:
-      type: string(128)
-      default: sha1
+      autoincrement: false
+    sha_pass_hash:
+      type: string(40)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: ''
       notnull: true
-    salt: string(128)
-    password: string(128)
-    is_active:
-      type: boolean
-      default: 1
-    is_super_admin:
-      type: boolean
-      default: false
+      autoincrement: false
+    gmlevel:
+      type: integer(1)
+      fixed: false
+      unsigned: true
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    sessionkey:
+      type: string()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    v:
+      type: string()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    s:
+      type: string()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    email:
+      type: string()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    joindate:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    last_ip:
+      type: string(30)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: 0.0.0.0
+      notnull: true
+      autoincrement: false
+    failed_logins:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    locked:
+      type: integer(1)
+      fixed: false
+      unsigned: true
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
     last_login:
-      type: timestamp
-  indexes:
-    is_active_idx:
-      fields: [is_active]
-  relations:
-    Groups:
-      class: sfGuardGroup
-      local: user_id
-      foreign: group_id
-      refClass: sfGuardUserGroup
-      foreignAlias: Users
-    Permissions:
-      class: sfGuardPermission
-      local: user_id
-      foreign: permission_id
-      refClass: sfGuardUserPermission
-      foreignAlias: Users
-
-sfGuardUserPermission:
-  options:
-    symfony:
-      form:   false
-      filter: false
-  actAs: [Timestampable]
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0000-00-00 00:00:00'
+      notnull: true
+      autoincrement: false
+    active_realm_id:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    expansion:
+      type: integer(1)
+      fixed: false
+      unsigned: true
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    mutetime:
+      type: integer(8)
+      fixed: false
+      unsigned: true
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    locale:
+      type: integer(1)
+      fixed: false
+      unsigned: true
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+AccountBanned:
+  connection: doctrine
+  tableName: account_banned
   columns:
-    user_id:
-      type: integer
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
       primary: true
-    permission_id:
-      type: integer
+      autoincrement: false
+    bandate:
+      type: integer(8)
+      fixed: false
+      unsigned: false
       primary: true
-  relations:
-    User:
-      class: sfGuardUser
-      local: user_id
-      onDelete: CASCADE
-    Permission:
-      class: sfGuardPermission
-      local: permission_id
-      onDelete: CASCADE
-
-sfGuardUserGroup:
-  options:
-    symfony:
-      form:   false
-      filter: false
-  actAs: [Timestampable]
+      autoincrement: false
+    unbandate:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    bannedby:
+      type: string(50)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    banreason:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    active:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '1'
+      notnull: true
+      autoincrement: false
+IpBanned:
+  connection: doctrine
+  tableName: ip_banned
   columns:
-    user_id:
-      type: integer
+    ip:
+      type: string(32)
+      fixed: false
+      unsigned: false
       primary: true
-    group_id:
-      type: integer
+      autoincrement: false
+    bandate:
+      type: integer(8)
+      fixed: false
+      unsigned: false
       primary: true
-  relations:
-    User:
-      class: sfGuardUser
-      local: user_id
-      onDelete: CASCADE
-    Group:
-      class: sfGuardGroup
-      local: group_id
-      onDelete: CASCADE
+      autoincrement: false
+    unbandate:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    bannedby:
+      type: string(50)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '[Console]'
+      notnull: true
+      autoincrement: false
+    banreason:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: 'no reason'
+      notnull: true
+      autoincrement: false
 
 sfGuardRememberKey:
   options:
@@ -152,7 +229,7 @@ sfGuardRememberKey:
     ip_address: string(50)
   relations:
     User:
-      class: sfGuardUser
+      class: Account
       local: user_id
       foreignAlias: RememberKeys
       foreignType: one
@@ -174,7 +251,7 @@ sfGuardForgotPassword:
       notnull: true
   relations:
     User:
-      class: sfGuardUser
+      class: Account
       local: user_id
       type: one
       foreignType: one

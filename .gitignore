@@ -1,0 +1,7 @@
+.gitmodules
+config/databases.yml
+config/ProjectConfiguration.class.php
+symfony
+lib/vendor
+cache
+config/*.ini
