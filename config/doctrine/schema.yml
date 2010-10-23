@@ -3,7 +3,7 @@ Account:
   tableName: account
   columns:
     id:
-      type: integer(4)
+      type: integer(11)
       fixed: false
       unsigned: true
       primary: true
@@ -224,7 +224,10 @@ sfGuardRememberKey:
       filter: false
   actAs: [Timestampable]
   columns:
-    user_id: integer
+    user_id:
+      type: integer(11)
+      unsigned: true
+      notnull: true
     remember_key: string(32)
     ip_address: string(50)
   relations:
@@ -233,7 +236,6 @@ sfGuardRememberKey:
       local: user_id
       foreignAlias: RememberKeys
       foreignType: one
-      onDelete: CASCADE
 
 sfGuardForgotPassword:
   options:
@@ -243,7 +245,8 @@ sfGuardForgotPassword:
   actAs: [Timestampable]
   columns:
     user_id:
-      type: integer
+      type: integer(11)
+      unsigned: true
       notnull: true
     unique_key: string(255)
     expires_at:
@@ -256,4 +259,3 @@ sfGuardForgotPassword:
       type: one
       foreignType: one
       foreignAlias: ForgotPassword
-      onDelete: CASCADE
