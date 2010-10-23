@@ -15,11 +15,16 @@ class BasesfGuardRegisterForm extends sfGuardUserAdminForm
     parent::setup();
 
     unset(
-      $this['is_active'],
-      $this['is_super_admin'],
-      $this['updated_at']
+      $this['gmlevel'],
+      $this['joindate'],
+      $this['last_ip'],
+      $this['locked'],
+      $this['active_realm_id'],
+      $this['mutetime'],
+      $this['locale']
     );
 
+    $this->widgetSchema['sha_pass_hash']->setLabel('Password');
     $this->validatorSchema['sha_pass_hash']->setOption('required', true);
   }
 }

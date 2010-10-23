@@ -13,6 +13,10 @@
         <target>Mot de passe</target>
       </trans-unit>
       <trans-unit>
+        <source>Password again</source>
+        <target>Confirmation Mot de passe</target>
+      </trans-unit>
+      <trans-unit>
         <source>Remember</source>
         <target>Se rappeler</target>
       </trans-unit>

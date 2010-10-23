@@ -18,15 +18,27 @@ class BasesfGuardUserAdminForm extends BaseAccountForm
     parent::setup();
 
     unset(
-      $this['last_login'],
-      $this['created_at'],
-      $this['updated_at']
+      $this['sessionkey'],
+      $this['v'],
+      $this['s'],
+      $this['failed_logins'],
+      $this['last_login']
     );
 
     $this->widgetSchema['sha_pass_hash'] = new sfWidgetFormInputPassword();
     $this->validatorSchema['sha_pass_hash']->setOption('required', false);
     $this->widgetSchema['password_again'] = new sfWidgetFormInputPassword();
     $this->validatorSchema['password_again'] = clone $this->validatorSchema['sha_pass_hash'];
+    $this->widgetSchema['email'] = new sfWidgetFormInputText();
+    
+    $expansions = array(
+     0 => 'Classic',
+     1 => 'Burning Crusade',
+     2 => 'Wrath of The Lich King',
+     3 => 'Cataclysm',
+    );
+    $this->widgetSchema['expansion'] = new sfWidgetFormChoice(array('choices' => $expansions));
+    $this->validatorSchema['expansion'] = new sfValidatorChoice(array('choices' => $expansions));
 
     $this->widgetSchema->moveField('password_again', 'after', 'sha_pass_hash');
 
