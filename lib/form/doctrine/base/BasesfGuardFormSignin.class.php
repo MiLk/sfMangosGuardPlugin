@@ -18,13 +18,13 @@ class BasesfGuardFormSignin extends BaseForm
   {
     $this->setWidgets(array(
       'username' => new sfWidgetFormInputText(),
-      'password' => new sfWidgetFormInputPassword(array('type' => 'password')),
+      'sha_pass_hash' => new sfWidgetFormInputPassword(array('type' => 'password')),
       'remember' => new sfWidgetFormInputCheckbox(),
     ));
 
     $this->setValidators(array(
       'username' => new sfValidatorString(),
-      'password' => new sfValidatorString(),
+      'sha_pass_hash' => new sfValidatorString(),
       'remember' => new sfValidatorBoolean(),
     ));
 

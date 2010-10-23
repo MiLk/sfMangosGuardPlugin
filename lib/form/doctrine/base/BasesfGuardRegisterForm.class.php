@@ -17,11 +17,9 @@ class BasesfGuardRegisterForm extends sfGuardUserAdminForm
     unset(
       $this['is_active'],
       $this['is_super_admin'],
-      $this['updated_at'],
-      $this['groups_list'],
-      $this['permissions_list']
+      $this['updated_at']
     );
 
-    $this->validatorSchema['password']->setOption('required', true);
+    $this->validatorSchema['sha_pass_hash']->setOption('required', true);
   }
 }
