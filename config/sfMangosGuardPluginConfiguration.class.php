@@ -17,7 +17,7 @@
  * @author     Jonathan H. Wage <jonwage@gmail.com>
  * @version    SVN: $Id$
  */
-class sfDoctrineGuardPluginConfiguration extends sfPluginConfiguration
+class sfMangosGuardPluginConfiguration extends sfPluginConfiguration
 {
   /**
    * @see sfPluginConfiguration
@@ -32,7 +32,7 @@ class sfDoctrineGuardPluginConfiguration extends sfPluginConfiguration
         $this->dispatcher->connect('routing.load_configuration', array('sfGuardRouting', 'listenToRoutingLoadConfigurationEvent'));
       }
 
-      foreach (array('sfGuardUser', 'sfGuardGroup', 'sfGuardPermission', 'sfGuardRegister', 'sfGuardForgotPassword') as $module)
+      foreach (array('sfGuardRegister', 'sfGuardForgotPassword') as $module)
       {
         if (in_array($module, $enabledModules))
         {

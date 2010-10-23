@@ -49,63 +49,6 @@ class sfGuardRouting
   }
 
   /**
-   * Adds an sfDoctrineRouteCollection collection to manage users.
-   *
-   * @param sfEvent $event
-   * @static
-   */
-  static public function addRouteForUser(sfEvent $event)
-  {
-    $event->getSubject()->prependRoute('sf_guard_user', new sfDoctrineRouteCollection(array(
-      'name'                => 'sf_guard_user',
-      'model'               => 'sfGuardUser',
-      'module'              => 'sfGuardUser',
-      'prefix_path'         => 'guard/users',
-      'with_wildcard_routes' => true,
-      'collection_actions'  => array('filter' => 'post', 'batch' => 'post'),
-      'requirements'        => array(),
-    )));
-  }
-
-  /**
-   * Adds an sfDoctrineRouteCollection collection to manage groups.
-   *
-   * @param sfEvent $event
-   * @static
-   */
-  static public function addRouteForGroup(sfEvent $event)
-  {
-    $event->getSubject()->prependRoute('sf_guard_group', new sfDoctrineRouteCollection(array(
-      'name'                => 'sf_guard_group',
-      'model'               => 'sfGuardGroup',
-      'module'              => 'sfGuardGroup',
-      'prefix_path'         => 'guard/groups',
-      'with_wildcard_routes' => true,
-      'collection_actions'  => array('filter' => 'post', 'batch' => 'post'),
-      'requirements'        => array(),
-    )));
-  }
-
-  /**
-   * Adds an sfDoctrineRouteCollection collection to manage permissions.
-   *
-   * @param sfEvent $event
-   * @static
-   */
-  static public function addRouteForPermission(sfEvent $event)
-  {
-    $event->getSubject()->prependRoute('sf_guard_permission', new sfDoctrineRouteCollection(array(
-      'name'                => 'sf_guard_permission',
-      'model'               => 'sfGuardPermission',
-      'module'              => 'sfGuardPermission',
-      'prefix_path'         => 'guard/permissions',
-      'with_wildcard_routes' => true,
-      'collection_actions'  => array('filter' => 'post', 'batch' => 'post'),
-      'requirements'        => array(),
-    )));
-  }
-
-  /**
    * Adds an sfRoute for registration.
    *
    * @param sfEvent $event

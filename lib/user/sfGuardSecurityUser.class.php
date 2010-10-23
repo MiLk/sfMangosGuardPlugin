@@ -199,7 +199,7 @@ class sfGuardSecurityUser extends sfBasicSecurityUser
   {
     if (!$this->user && $id = $this->getAttribute('user_id', null, 'sfGuardSecurityUser'))
     {
-      $this->user = Doctrine_Core::getTable('sfGuardUser')->find($id);
+      $this->user = Doctrine_Core::getTable('Account')->find($id);
 
       if (!$this->user)
       {
@@ -273,119 +273,5 @@ class sfGuardSecurityUser extends sfBasicSecurityUser
   public function checkPassword($password)
   {
     return $this->getGuardUser()->checkPassword($password);
-  }
-
-  /**
-   * Returns whether or not the user belongs to the given group.
-   *
-   * @param string $name The group name
-   * @return boolean
-   */
-  public function hasGroup($name)
-  {
-    return $this->getGuardUser() ? $this->getGuardUser()->hasGroup($name) : false;
-  }
-
-  /**
-   * Returns the user's groups.
-   *
-   * @return array|Doctrine_Collection
-   */
-  public function getGroups()
-  {
-    return $this->getGuardUser() ? $this->getGuardUser()->getGroups() : array();
-  }
-
-  /**
-   * Returns the user's group names.
-   *
-   * @return array
-   */
-  public function getGroupNames()
-  {
-    return $this->getGuardUser() ? $this->getGuardUser()->getGroupNames() : array();
-  }
-
-  /**
-   * Returns whether or not the user has the given permission.
-   *
-   * @param string $name The permission name
-   * @return string
-   */
-  public function hasPermission($name)
-  {
-    return $this->getGuardUser() ? $this->getGuardUser()->hasPermission($name) : false;
-  }
-
-  /**
-   * Returns the Doctrine_Collection of single sfGuardPermission objects.
-   *
-   * @return Doctrine_Collection
-   */
-  public function getPermissions()
-  {
-    return $this->getGuardUser()->getPermissions();
-  }
-
-  /**
-   * Returns the array of permissions names.
-   *
-   * @return array
-   */
-  public function getPermissionNames()
-  {
-    return $this->getGuardUser() ? $this->getGuardUser()->getPermissionNames() : array();
-  }
-
-  /**
-   * Returns the array of all permissions.
-   *
-   * @return array
-   */
-  public function getAllPermissions()
-  {
-    return $this->getGuardUser() ? $this->getGuardUser()->getAllPermissions() : array();
-  }
-
-  /**
-   * Returns the array of all permissions names.
-   *
-   * @return array
-   */
-  public function getAllPermissionNames()
-  {
-    return $this->getGuardUser() ? $this->getGuardUser()->getAllPermissionNames() : array();
-  }
-
-  /**
-   * Returns the related profile object.
-   *
-   * @return Doctrine_Record
-   */
-  public function getProfile()
-  {
-    return $this->getGuardUser() ? $this->getGuardUser()->getProfile() : null;
-  }
-
-  /**
-   * Adds a group from its name to the current user.
-   *
-   * @param string $name The group name
-   * @param Doctrine_Connection $con A Doctrine_Connection object
-   */
-  public function addGroupByName($name, $con = null)
-  {
-    return $this->getGuardUser()->addGroupByName($name, $con);
-  }
-
-  /**
-   * Adds a permission from its name to the current user.
-   *
-   * @param string $name The permission name
-   * @param Doctrine_Connection $con A Doctrine_Connection object
-   */
-  public function addPermissionByName($name, $con = null)
-  {
-    return $this->getGuardUser()->addPermissionByName($name, $con);
   }
 }

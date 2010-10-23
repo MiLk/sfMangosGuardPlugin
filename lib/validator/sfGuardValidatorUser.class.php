@@ -64,6 +64,6 @@ class sfGuardValidatorUser extends sfValidatorBase
 
   protected function getTable()
   {
-    return Doctrine::getTable('sfGuardUser');
+    return Doctrine::getTable('Account');
   }
 }
