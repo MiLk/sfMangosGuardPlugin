@@ -38,7 +38,7 @@ class BasesfGuardUserAdminForm extends BaseAccountForm
      3 => 'Cataclysm',
     );
     $this->widgetSchema['expansion'] = new sfWidgetFormChoice(array('choices' => $expansions));
-    $this->validatorSchema['expansion'] = new sfValidatorChoice(array('choices' => $expansions));
+    $this->validatorSchema['expansion'] = new sfValidatorChoice(array('choices' => array_keys($expansions)));
 
     $this->widgetSchema->moveField('password_again', 'after', 'sha_pass_hash');
 
