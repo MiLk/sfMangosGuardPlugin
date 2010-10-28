@@ -8,6 +8,6 @@
  * @author     ##AUTHOR_NAME##
  * @version    SVN: $Id: sfDoctrineFormPluginTemplate.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
-class AccountForm extends BaseAccountForm
+abstract class PluginAccountForm extends BaseAccountForm
 {
 }
