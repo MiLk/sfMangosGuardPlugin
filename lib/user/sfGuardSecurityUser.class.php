@@ -125,7 +125,7 @@ class sfGuardSecurityUser extends sfBasicSecurityUser
     $this->setAttribute('user_id', $user->getId(), 'sfGuardSecurityUser');
     $this->setAuthenticated(true);
     $this->clearCredentials();
-    $this->addCredentials($user->getAllPermissionNames());
+    $this->addCredentials($user->getGmlevel());
 
     // save last login
     $user->setLastLogin(date('Y-m-d H:i:s'));
