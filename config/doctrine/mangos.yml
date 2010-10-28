@@ -2,220 +2,90 @@
 #They're missing indexes, wring type, etc.
 #You must use sql from MaNGOS Project
 Account:
-  connection: doctrine
-  tableName: account
   columns:
-    id:
-      type: integer(11)
-      fixed: false
-      unsigned: true
-      primary: true
-      autoincrement: true
-    username:
-      type: string(32)
-      fixed: false
-      unsigned: false
-      primary: false
-      default: ''
-      notnull: true
-      autoincrement: false
-    sha_pass_hash:
-      type: string(40)
-      fixed: false
-      unsigned: false
-      primary: false
-      default: ''
-      notnull: true
-      autoincrement: false
-    gmlevel:
-      type: integer(1)
-      fixed: false
-      unsigned: true
-      primary: false
-      default: '0'
-      notnull: true
-      autoincrement: false
-    sessionkey:
-      type: string()
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: false
-      autoincrement: false
-    v:
-      type: string()
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: false
-      autoincrement: false
-    s:
-      type: string()
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: false
-      autoincrement: false
-    email:
-      type: string()
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: false
-      autoincrement: false
-    joindate:
-      type: timestamp(25)
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: true
-      autoincrement: false
-    last_ip:
-      type: string(30)
-      fixed: false
-      unsigned: false
-      primary: false
-      default: 0.0.0.0
-      notnull: true
-      autoincrement: false
+    id: { type: integer(11), unsigned: true, primary: true, autoincrement: true }
+    username: { type: string(32), default: '', notnull: true, unique: true }
+    sha_pass_hash: { type: string(40), default: '', notnull: true }
+    gmlevel: { type: integer(1), unsigned: true, default: 0, notnull: true }
+    sessionkey: { type: string() }
+    v: { type: string() }
+    s: { type: string() }
+    email: { type: string() }
+    joindate: { type: timestamp(25), notnull: true, default: CURRENT_TIMESTAMP }
+    last_ip: { type: string(30), default: 0.0.0.0, notnull: true }
     failed_logins:
       type: integer(4)
-      fixed: false
       unsigned: true
-      primary: false
       default: '0'
       notnull: true
-      autoincrement: false
     locked:
       type: integer(1)
-      fixed: false
       unsigned: true
-      primary: false
       default: '0'
       notnull: true
-      autoincrement: false
     last_login:
       type: timestamp(25)
-      fixed: false
-      unsigned: false
-      primary: false
       default: '0000-00-00 00:00:00'
       notnull: true
-      autoincrement: false
     active_realm_id:
       type: integer(4)
-      fixed: false
       unsigned: true
-      primary: false
       default: '0'
       notnull: true
-      autoincrement: false
     expansion:
       type: integer(1)
-      fixed: false
       unsigned: true
-      primary: false
       default: '0'
       notnull: true
-      autoincrement: false
     mutetime:
       type: integer(8)
-      fixed: false
       unsigned: true
-      primary: false
       default: '0'
       notnull: true
-      autoincrement: false
     locale:
       type: integer(1)
-      fixed: false
       unsigned: true
-      primary: false
       default: '0'
       notnull: true
-      autoincrement: false
 AccountBanned:
-  connection: doctrine
-  tableName: account_banned
   columns:
     id:
       type: integer(4)
-      fixed: false
-      unsigned: false
       primary: true
-      autoincrement: false
     bandate:
       type: integer(8)
-      fixed: false
-      unsigned: false
       primary: true
-      autoincrement: false
     unbandate:
       type: integer(8)
-      fixed: false
-      unsigned: false
-      primary: false
       default: '0'
       notnull: true
-      autoincrement: false
     bannedby:
       type: string(50)
-      fixed: false
-      unsigned: false
-      primary: false
       notnull: true
-      autoincrement: false
     banreason:
       type: string(255)
-      fixed: false
-      unsigned: false
-      primary: false
       notnull: true
-      autoincrement: false
     active:
       type: integer(1)
-      fixed: false
-      unsigned: false
-      primary: false
       default: '1'
       notnull: true
-      autoincrement: false
+
 IpBanned:
-  connection: doctrine
-  tableName: ip_banned
   columns:
     ip:
       type: string(32)
-      fixed: false
-      unsigned: false
       primary: true
-      autoincrement: false
     bandate:
       type: integer(8)
-      fixed: false
-      unsigned: false
       primary: true
-      autoincrement: false
     unbandate:
       type: integer(8)
-      fixed: false
-      unsigned: false
-      primary: false
       notnull: true
-      autoincrement: false
     bannedby:
       type: string(50)
-      fixed: false
-      unsigned: false
-      primary: false
       default: '[Console]'
       notnull: true
-      autoincrement: false
     banreason:
       type: string(255)
-      fixed: false
-      unsigned: false
-      primary: false
       default: 'no reason'
       notnull: true
-      autoincrement: false
