@@ -11,12 +11,6 @@ sfGuardRememberKey:
       notnull: true
     remember_key: string(32)
     ip_address: string(50)
-  relations:
-    User:
-      class: Account
-      local: user_id
-      foreignAlias: RememberKeys
-      foreignType: one
 
 sfGuardForgotPassword:
   options:
@@ -33,10 +27,3 @@ sfGuardForgotPassword:
     expires_at:
       type: timestamp
       notnull: true
-  relations:
-    User:
-      class: Account
-      local: user_id
-      type: one
-      foreignType: one
-      foreignAlias: ForgotPassword
