@@ -36,6 +36,46 @@
         <source>Want to register?</source>
         <target>Envie de créer un compte ?</target>
       </trans-unit>
+      <trans-unit>
+        <source>Email address</source>
+        <target>Adresse Email</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Request</source>
+        <target>Envoyer</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Do not worry, we can help you get back in to your account safely!</source>
+        <target>Ne vous inquiétez pas, nous pouvons vous aider à accéder de nouveau à votre compte en toute sécurité !</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Fill out the form below to request an e-mail with information on how to reset your password.</source>
+        <target>Remplissez le formulaire pour recevoir un email avec les informations pour réinitialiser votre mot de passe.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Hi %username%</source>
+        <target>Salut %username%</target>
+      </trans-unit>
+      <trans-unit>
+        <source>This e-mail is being sent because you requested information on how to reset your password.</source>
+        <target>Cet email a été envoyé, parce que vous avez demandé des informations pour réinitialiser votre mot de passe.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>You can change your password by clicking the below link which is only valid for 24 hours:</source>
+        <target>Vous pouvez changer votre mot de passe en cliquant sur le lien ci-dessous, qui est valide pendant 24 heures :</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Click to change password</source>
+        <target>Cliquez pour changer de mot de passe</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Below you will your username and new password:</source>
+        <target>Voici votre nom d'utilisateur et nouveau mot de passe :</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Enter your new password in the form below.</source>
+        <target>Entrez votre nouveau password dans le formulaire ci-dessous.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

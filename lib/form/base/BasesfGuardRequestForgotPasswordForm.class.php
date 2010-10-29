@@ -12,8 +12,8 @@ class BasesfGuardRequestForgotPasswordForm extends BaseForm
 {
   public function setup()
   {
-    $this->widgetSchema['email_address'] = new sfWidgetFormInput();
-    $this->validatorSchema['email_address'] = new sfValidatorString();
+    $this->widgetSchema['email'] = new sfWidgetFormInput();
+    $this->validatorSchema['email'] = new sfValidatorString();
 
     $this->widgetSchema->setNameFormat('forgot_password[%s]');
   }
@@ -24,9 +24,9 @@ class BasesfGuardRequestForgotPasswordForm extends BaseForm
     if ($valid)
     {
       $values = $this->getValues();
-      $this->user = Doctrine_Core::getTable('sfGuardUser')
+      $this->user = Doctrine_Core::getTable('Account')
         ->createQuery('u')
-        ->where('u.email_address = ?', $values['email_address'])
+        ->where('u.email = ?', $values['email'])
         ->fetchOne();
 
       if ($this->user)
