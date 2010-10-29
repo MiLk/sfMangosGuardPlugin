@@ -2,6 +2,14 @@
 #They're missing indexes, wring type, etc.
 #You must use sql from MaNGOS Project
 Account:
+  actAs:
+    Timestampable:
+      created:
+        name: joindate
+        type: timestamp
+        format: Y-m-d H:i:s
+      updated:
+        disabled: true
   columns:
     id: { type: integer(11), unsigned: true, primary: true, autoincrement: true }
     username: { type: string(32), default: '', notnull: true, unique: true }

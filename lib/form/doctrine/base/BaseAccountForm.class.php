@@ -43,7 +43,7 @@ abstract class BaseAccountForm extends BaseFormDoctrine
       'v'               => new sfValidatorString(array('required' => false)),
       's'               => new sfValidatorString(array('required' => false)),
       'email'           => new sfValidatorString(array('required' => false)),
-      'joindate'        => new sfValidatorDateTime(array('required' => false)),
+      'joindate'        => new sfValidatorDateTime(),
       'last_ip'         => new sfValidatorString(array('max_length' => 30, 'required' => false)),
       'failed_logins'   => new sfValidatorInteger(array('required' => false)),
       'locked'          => new sfValidatorInteger(array('required' => false)),

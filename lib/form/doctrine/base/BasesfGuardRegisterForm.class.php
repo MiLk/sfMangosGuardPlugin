@@ -17,14 +17,12 @@ class BasesfGuardRegisterForm extends sfGuardUserAdminForm
     unset(
       $this['gmlevel'],
       $this['joindate'],
+      $this['last_ip'],
       $this['locked'],
       $this['active_realm_id'],
       $this['mutetime'],
       $this['locale']
     );
-
-    $this->setWidget('last_ip',new sfWidgetFormInputHidden());
-    $this->getValidator('last_ip')->addOption('required',false);
 
     $this->widgetSchema['sha_pass_hash']->setLabel('Password');
     $this->validatorSchema['sha_pass_hash']->setOption('required', true);
@@ -58,16 +56,12 @@ class BasesfGuardRegisterForm extends sfGuardUserAdminForm
     return $value;
   }
 
-  /**
-   * Process a cleaned up value before it is used by the updateObject() method.
-   *
-   * Set the last_ip column to ip used while registration
-   *
-   * The method return the processed value or false to remove the value
-   * from the array of cleaned up values.
-   */
-  public function updateLastIpColumn($value)
+  public function  updateObject($values = null)
   {
-    return $_SERVER['REMOTE_ADDR'];
+    parent::updateObject($values);
+    $this->getObject()->__unset('joindate');
+    print_r('<pre>');
+    print_r($this->getObject()->getData());
+    print_r('</pre>');
   }
 }
