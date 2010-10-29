@@ -20,7 +20,7 @@ class sfGuardValidatorUser extends sfValidatorBase
   public function configure($options = array(), $messages = array())
   {
     $this->addOption('username_field', 'username');
-    $this->addOption('password_field', 'password');
+    $this->addOption('password_field', 'sha_pass_hash');
     $this->addOption('throw_global_error', false);
 
     $this->setMessage('invalid', 'The username and/or password is invalid.');
@@ -31,7 +31,7 @@ class sfGuardValidatorUser extends sfValidatorBase
     $username = isset($values[$this->getOption('username_field')]) ? $values[$this->getOption('username_field')] : '';
     $password = isset($values[$this->getOption('password_field')]) ? $values[$this->getOption('password_field')] : '';
 
-    $allowEmail = sfConfig::get('app_sf_guard_plugin_allow_login_with_email', true);
+    $allowEmail = sfConfig::get('app_sf_guard_plugin_allow_login_with_email', false);
     $method = $allowEmail ? 'retrieveByUsernameOrEmailAddress' : 'retrieveByUsername';
 
     // don't allow to sign in with an empty username

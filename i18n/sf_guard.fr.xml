@@ -32,6 +32,10 @@
         <source>You don't have the required permission to access this page.</source>
         <target>Vous n'avez pas les permissions nécessaires pour accéder à cette page.</target>
       </trans-unit>
+      <trans-unit>
+        <source>Want to register?</source>
+        <target>Envie de créer un compte ?</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -75,7 +75,7 @@ abstract class PluginAccount extends BaseAccount
    */
   public function checkPasswordByGuard($password)
   {
-    return $this->getPassword() == sha1(strtoupper($this->getUsername()).':'.strtoupper($password));
+    return $this->getShaPassHash() == sha1(strtoupper($this->getUsername()).':'.strtoupper($password));
   }
 
   /**
@@ -94,6 +94,12 @@ abstract class PluginAccount extends BaseAccount
     {
       $this->_set('sha_pass_hash',$v);
     }
+  }
+
+
+  public function getIsActive()
+  {
+    return true;
   }
 
 }
