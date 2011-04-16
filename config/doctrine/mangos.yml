@@ -2,6 +2,7 @@
 #They're missing indexes, wring type, etc.
 #You must use sql from MaNGOS Project
 Account:
+  connection: realmd
   actAs:
     Timestampable:
       created:
@@ -56,6 +57,7 @@ Account:
       default: '0'
       notnull: true
 AccountBanned:
+  connection: realmd
   columns:
     id:
       type: integer(4)
@@ -79,6 +81,7 @@ AccountBanned:
       notnull: true
 
 IpBanned:
+  connection: realmd
   columns:
     ip:
       type: string(32)

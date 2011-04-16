@@ -1,4 +1,5 @@
 sfGuardRememberKey:
+  connection: doctrine
   options:
     symfony:
       form:   false
@@ -13,6 +14,7 @@ sfGuardRememberKey:
     ip_address: string(50)
 
 sfGuardForgotPassword:
+  connection: doctrine
   options:
     symfony:
       form:   false
