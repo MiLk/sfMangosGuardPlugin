@@ -98,7 +98,7 @@ abstract class PluginAccount extends BaseAccount
   
   public function generatePassword()
   {
-    return substr(sha1(),rand(0,10),rand(8,10));
+    return substr(sha1(md5(uniqid(rand(), true))),rand(0,10),rand(8,10));
   }
 
   public function getIsActive()
