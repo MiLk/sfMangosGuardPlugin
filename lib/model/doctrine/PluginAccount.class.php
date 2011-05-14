@@ -95,7 +95,11 @@ abstract class PluginAccount extends BaseAccount
       $this->_set('sha_pass_hash',$v);
     }
   }
-
+  
+  public function generatePassword()
+  {
+    return substr(sha1(),rand(0,10),rand(8,10));
+  }
 
   public function getIsActive()
   {
