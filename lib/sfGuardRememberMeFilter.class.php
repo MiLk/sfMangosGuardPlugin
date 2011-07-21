@@ -26,6 +26,7 @@
  */
 class sfGuardRememberMeFilter extends sfFilter
 {
+
   /**
    * Executes the filter chain.
    *
@@ -33,9 +34,9 @@ class sfGuardRememberMeFilter extends sfFilter
    */
   public function execute($filterChain)
   {
-    $cookieName = sfConfig::get('app_sf_guard_plugin_remember_cookie_name', 'sfRemember');
+    $cookieName = sfConfig::get('app_sf_guard_plugin_remember_cookie_name','sfRemember');
 
-    if (
+    if(
       $this->isFirstCall()
       &&
       $this->context->getUser()->isAnonymous()
@@ -43,16 +44,25 @@ class sfGuardRememberMeFilter extends sfFilter
       $cookie = $this->context->getRequest()->getCookie($cookieName)
     )
     {
-      $q = Doctrine_Core::getTable('sfGuardRememberKey')->createQuery('r')
-            ->innerJoin('r.User u')
-            ->where('r.remember_key = ?', $cookie);
+      $remkey = Doctrine_Core::getTable('sfGuardRememberKey')->createQuery('r')
+        ->select('r.user_id')
+        ->where('r.remember_key = ?',$cookie);
 
-      if ($q->count())
+      if($remkey->count())
       {
-        $this->context->getUser()->signIn($q->fetchOne()->User);
+        $account_id = $remkey->fetchOne();
+
+        $q = Doctrine_Core::getTable('Account')->createQuery('r')
+          ->where('r.id = ?',$account_id);
+
+        if($q->count())
+        {
+          $this->context->getUser()->signIn($q->fetchOne()->User);
+        }
       }
     }
 
     $filterChain->execute();
   }
+
 }
