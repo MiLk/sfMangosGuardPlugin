@@ -50,14 +50,14 @@ class sfGuardRememberMeFilter extends sfFilter
 
       if($remkey->count())
       {
-        $account_id = $remkey->fetchOne();
+        $account_id = $remkey->fetchOne()->getUserId();
 
         $q = Doctrine_Core::getTable('Account')->createQuery('r')
           ->where('r.id = ?',$account_id);
 
         if($q->count())
         {
-          $this->context->getUser()->signIn($q->fetchOne()->User);
+          $this->context->getUser()->signIn($q->fetchOne());
         }
       }
     }
